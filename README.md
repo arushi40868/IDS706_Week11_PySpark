@@ -136,7 +136,6 @@ Spark executed no job until an **action** occurred—visible in the UI.
 ## 📘 Takeaways
 - Built a fully distributed ETL + Analytics pipeline on Spark Serverless.  
 - Demonstrated **lazy evaluation**, **query optimization**, and **caching strategies** without direct `sparkContext` access.  
-- Applied MLlib modeling under real Serverless constraints.  
 - Delivered reproducible Parquet outputs and SQL insights ready for dashboarding (e.g., Power BI / Tableau).
 
 ---
