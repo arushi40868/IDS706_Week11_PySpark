@@ -46,7 +46,7 @@ It integrates **ETL**, **SQL analytics**, **performance tuning** and **lazy vs e
   - Wrote curated output as Parquet partitioned by `year, state` to:
     `/Volumes/main/commodities/curated/daily_stats`
 
-📸 *Insert screenshot of successful pipeline output (dbutils.fs.ls listing)*
+![Pipeline Output](./Dbutils.png)
 
 ---
 
@@ -60,10 +60,10 @@ It integrates **ETL**, **SQL analytics**, **performance tuning** and **lazy vs e
 | **Partitioned Write** | Output partitioned by `year, state` for efficient downstream queries. |
 
 ### `.explain("formatted")`
-📸 *Insert screenshot of `.explain()` output highlighting Filter → Project → BroadcastHashJoin → HashAggregate → Exchange → Write parquet*
+![Explain](./explain.png)
 
 ### Spark UI / Query Details
-📸 *Insert screenshot from SQL tab → Query Details view*
+![Query Details](./query.png)
 
 ---
 
@@ -87,7 +87,7 @@ GROUP BY state, commodity
 ORDER BY mean_spread DESC
 LIMIT 25;
 ```
-📸 *Screenshot of top 25 volatile commodities table*
+![SQL 1](./sql1.png)
 
 **Query 2 – Tomato Price Trend:**
 ```sql
@@ -97,7 +97,7 @@ WHERE lower(commodity) = 'tomato'
 GROUP BY year, month, state
 ORDER BY year, month, state;
 ```
-📸 *Screenshot of trend output or chart*
+![SQL 2](./sql2.png)
 
 ---
 
@@ -120,7 +120,7 @@ lazy_df.write.parquet("/Volumes/main/commodities/tmp/demo")  # persists results
 ```
 Spark executed no job until an **action** occurred—visible in the UI.
 
-📸 *Screenshot: no jobs before action → jobs triggered after count/collect*
+![Lazy Pipeline](./lazy_pipeline.png)
 
 
 ---
