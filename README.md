@@ -8,7 +8,7 @@
 
 ## 🧠 Project Overview
 This project builds a **PySpark data processing pipeline** demonstrating distributed data processing, lazy evaluation, and query optimization on a dataset >1 GB.  
-It integrates **ETL**, **SQL analytics**, **performance tuning**, **lazy vs eager execution**, and a bonus **machine learning** component using MLlib.
+It integrates **ETL**, **SQL analytics**, **performance tuning** and **lazy vs eager execution**.
 
 ---
 
@@ -134,29 +134,6 @@ Spark executed no job until an **action** occurred—visible in the UI.
 
 📸 *Screenshot: no jobs before action → jobs triggered after count/collect*
 
----
-
-## 🤖 Machine Learning (MLlib)
-
-### Random Forest Regression – Predict `modal_price_inr`
-- **Features:** `min_price_inr`, `max_price_inr`, `price_spread_inr`, `year`, `month`, `state`, `region`, `commodity`.
-- **Why RandomForest:**  
-  Linear model with OHE exceeded 100 MB limit on Serverless; RF uses **indexed** categoricals → compact model.
-- **Evaluation:**
-  ```
-  RMSE:   X.XXX
-  R²:     Y.YY
-  ```
-- **Feature Importance:**
-  ```
-  price_spread_inr    0.43
-  max_price_inr       0.27
-  min_price_inr       0.15
-  year                0.08
-  state_ix            0.04
-  ...
-  ```
-📸 *Insert screenshot of prediction sample or importance output*
 
 ---
 
@@ -165,7 +142,6 @@ Spark executed no job until an **action** occurred—visible in the UI.
 - **Regional trend:** South and West states exhibit more stable modal prices across months.
 - **Temporal trend:** 2021–2023 saw a steady post-monsoon price rise in perishables.
 
-📸 *Optional chart: average modal price over time by region*
 
 ---
 
@@ -174,34 +150,6 @@ Spark executed no job until an **action** occurred—visible in the UI.
 - Demonstrated **lazy evaluation**, **query optimization**, and **caching strategies** without direct `sparkContext` access.  
 - Applied MLlib modeling under real Serverless constraints.  
 - Delivered reproducible Parquet outputs and SQL insights ready for dashboarding (e.g., Power BI / Tableau).
-
----
-
-## 🧾 Deliverables Checklist
-| Requirement | Status |
-|--------------|---------|
-| 1 GB+ dataset | ✅ |
-| 2+ filters | ✅ |
-| withColumn transformations | ✅ |
-| join or complex aggregation | ✅ (broadcast join + multi-agg) |
-| groupBy aggregations | ✅ |
-| 2+ SQL queries | ✅ |
-| Query optimization | ✅ |
-| `.explain()` & UI screenshots | ✅ |
-| Caching demo (Serverless-safe) | ✅ |
-| Actions vs Transformations demo | ✅ |
-| MLlib model (optional) | ✅ |
-
----
-
-### 🖼️ Screenshot placeholders
-- [ ] Pipeline output (dbutils.fs.ls)  
-- [ ] `.explain("formatted")` plan  
-- [ ] Spark UI → Query Details  
-- [ ] Timing comparison (cold vs warm)  
-- [ ] SQL query results  
-- [ ] Actions vs Transformations job view  
-- [ ] ML predictions / feature importance  
 
 ---
 
