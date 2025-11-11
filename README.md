@@ -75,18 +75,6 @@ Spark pushed filters on `arrival_date` and price fields into the Parquet scan, l
 **Shuffle Reduction:**  
 By repartitioning on `(state, commodity)`, shuffle volume decreased. The BroadcastHashJoin node eliminated an entire exchange stage for the region lookup.
 
-**Caching Optimization (Serverless-safe workaround):**  
-Serverless does not support `DataFrame.cache()` or `PERSIST TABLE`.  
-To demonstrate repeated-action optimization, the transformed DataFrame was **materialized to Parquet** and re-read:
-
-```
-Cold (recompute):  X.XX s  
-Warm (materialized read):  Y.YY s
-```
-📸 *Insert screenshot of timing cell result*
-
-This illustrates how avoiding recomputation (shortened lineage) speeds up repeated actions.
-
 ---
 
 ## 🧮 SQL Analytics
@@ -152,5 +140,3 @@ Spark executed no job until an **action** occurred—visible in the UI.
 - Delivered reproducible Parquet outputs and SQL insights ready for dashboarding (e.g., Power BI / Tableau).
 
 ---
-
-**End of README**
